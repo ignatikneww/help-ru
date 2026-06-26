@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Z-Horror — Первый хоррор сервер на базе ZCity</title>
+    <link rel="icon" href="assets/favicon.ico">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="navbar">
+        <a href="index.html" class="logo-link">
+            <img src="assets/logo.png" alt="Z-Horror" class="logo-img">
+        </a>
+        <nav class="nav-links">
+            <a href="index.html">Главная</a>
+            <a href="coins.html">Купить Zcoin</a>
+            <a href="privileges.html">Привилегии</a>
+            <a href="unban.html">Разбан</a>
+            <a href="rules.html">Правила</a>
+            <a href="wiki.html">Вики</a>
+            <a href="https://discord.gg/cx35GuHAbH" target="_blank" class="discord-btn">💬 Discord</a>
+        </nav>
+        <div class="user-block" id="userBlock">
+            <a href="/auth/steam" class="login-btn" id="loginBtn">
+                <img src="assets/steam-icon.png" alt="Steam" class="steam-icon">
+                Войти через Steam
+            </a>
+            <div class="user-info" id="userInfo" style="display:none">
+                <img src="" alt="" class="user-avatar" id="userAvatar">
+                <div class="user-details">
+                    <span class="user-name" id="userName"></span>
+                    <span class="user-balance" id="userBalance">0 <img src="assets/zcoin.png" class="mini-coin"></span>
+                </div>
+                <button class="logout-btn" onclick="logout()" title="Выйти">✕</button>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero" id="hero">
+        <div class="bg-slider">
+            <div class="bg-slide active" style="background-image: url('assets/bg1.png')"></div>
+            <div class="bg-slide" style="background-image: url('assets/bg2.png')"></div>
+            <div class="bg-slide" style="background-image: url('assets/bg3.png')"></div>
+            <div class="bg-slide" style="background-image: url('assets/bg4.png')"></div>
+            <div class="bg-slide" style="background-image: url('assets/bg5.png')"></div>
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Z-Horror</h1>
+            <p class="hero-subtitle">Первый хоррор сервер на базе ZCity. Погрузись в атмосферу настоящего ужаса.</p>
+            <button class="cta-btn" onclick="copyIP()">Подключиться к серверу</button>
+            <p class="server-ip">IP: <span id="server-ip">connect.z-horror.ru:27015</span></p>
+        </div>
+    </section>
+
+    <section class="features">
+        <h2 class="section-title">Что тебя ждёт?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🩸</div>
+                <h3>Хоррор-атмосфера</h3>
+                <p>Тёмные локации, жуткие звуки и постоянное напряжение</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">👹</div>
+                <h3>Монстры и маньяки</h3>
+                <p>Уникальные NPC и игровые роли в стиле survival horror</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔦</div>
+                <h3>База ZCity</h3>
+                <p>Знакомая механика с переработанной хоррор-составляющей</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚰️</div>
+                <h3>Постоянные ивенты</h3>
+                <p>Хэллоуин круглый год — события каждую неделю</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works">
+        <h2 class="section-title">Как работает донат?</h2>
+        <div class="steps-grid">
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <h3>Войди через Steam</h3>
+                <p>Авторизуйся — мы узнаем твой SteamID автоматически</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <h3>Купи Zcoin</h3>
+                <p>Оплати через DonationAlerts — монеты зачислятся мгновенно</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">3</div>
+                <h3>Трать на сервере</h3>
+                <p>Покупай привилегии, разбан и предметы за Zcoin</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>© 2025 Z-Horror. Все права защищены.</p>
+        <p class="footer-team">Z-Horror Team: <span>ignatik</span>, <span>frost</span></p>
+        <p>Discord: <a href="https://discord.gg/cx35GuHAbH" target="_blank">discord.gg/cx35GuHAbH</a></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
