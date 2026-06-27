@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Купить Zcoin — Z-Horror</title>
-    <link rel="icon" href="assets/favicon.ico">
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
     <header class="navbar">
@@ -18,110 +16,71 @@
             <a href="unban.html">Разбан</a>
             <a href="rules.html">Правила</a>
             <a href="wiki.html">Вики</a>
-            <a href="https://discord.gg/cx35GuHAbH" target="_blank" class="discord-btn">💬 Discord</a>
+            <a href="https://discord.gg/cx35GuHAbH" target="_blank" class="discord-btn">Discord</a>
         </nav>
-        <div class="user-block" id="userBlock">
-            <a href="/auth/steam" class="login-btn" id="loginBtn">
-                <img src="assets/steam-icon.png" alt="Steam" class="steam-icon"> Войти
-            </a>
-            <div class="user-info" id="userInfo" style="display:none">
-                <img src="" alt="" class="user-avatar" id="userAvatar">
-                <div class="user-details">
-                    <span class="user-name" id="userName"></span>
-                    <span class="user-balance" id="userBalance">0 <img src="assets/zcoin.png" class="mini-coin"></span>
-                </div>
-                <button class="logout-btn" onclick="logout()">✕</button>
-            </div>
-        </div>
     </header>
 
     <main class="page-content">
-        <h1 class="page-title">
-            <img src="assets/zcoin.png" alt="Zcoin" class="title-coin"> Купить Zcoin
-        </h1>
-        <p class="page-subtitle">Курс: <b style="color:#ffd700">1 ₽ = 1 Zcoin</b> · Автоматическое зачисление</p>
+        <h1 class="page-title">Купить Zcoin</h1>
+        <p class="page-subtitle">1 ₽ = 1 Zcoin • Автоматическое зачисление</p>
 
-        <!-- Не авторизован -->
-        <div class="auth-required" id="authRequired">
-            <div class="auth-card">
-                <p>Для покупки Zcoin нужно войти через Steam</p>
-                <a href="/auth/steam" class="steam-login-big">
-                    <img src="assets/steam-icon.png" class="steam-icon-big">
-                    Войти через Steam
-                </a>
+        <div class="steam-block">
+            <label>Твой SteamID (обязательно):</label>
+            <input type="text" id="steamId" placeholder="STEAM_0:1:12345678" class="steam-input">
+            <small>Как узнать SteamID → <a href="https://steamid.io" target="_blank">steamid.io</a></small>
+        </div>
+
+        <div class="coins-grid">
+            <div class="coin-pack" onclick="pay(100)">
+                <h3>100 Zcoin</h3>
+                <div class="price">100 ₽</div>
+                <button class="buy-btn">Купить</button>
+            </div>
+            <div class="coin-pack" onclick="pay(250)">
+                <h3>250 Zcoin</h3>
+                <div class="price">250 ₽</div>
+                <button class="buy-btn">Купить</button>
+            </div>
+            <div class="coin-pack featured" onclick="pay(500)">
+                <h3>550 Zcoin</h3>
+                <div class="price">500 ₽</div>
+                <span class="bonus">+50 бонус</span>
+                <button class="buy-btn">Купить</button>
+            </div>
+            <div class="coin-pack" onclick="pay(1000)">
+                <h3>1150 Zcoin</h3>
+                <div class="price">1000 ₽</div>
+                <span class="bonus">+150 бонус</span>
+                <button class="buy-btn">Купить</button>
             </div>
         </div>
 
-        <!-- Авторизован -->
-        <div class="coins-content" id="coinsContent" style="display:none">
-            <!-- Баланс -->
-            <div class="my-balance-card">
-                <span class="bal-label">Твой баланс:</span>
-                <span class="bal-value" id="myBalance">0</span>
-                <img src="assets/zcoin.png" class="bal-coin">
-            </div>
-
-            <!-- Пакеты -->
-            <div class="coins-grid">
-                <div class="coin-pack" onclick="buyZcoin(100)">
-                    <img src="assets/zcoin.png" alt="Zcoin" class="coin-img">
-                    <h3>100 Zcoin</h3>
-                    <div class="pack-price">100 ₽</div>
-                    <button class="cta-btn">Купить</button>
-                </div>
-                <div class="coin-pack" onclick="buyZcoin(250)">
-                    <img src="assets/zcoin.png" class="coin-img">
-                    <h3>250 Zcoin</h3>
-                    <div class="pack-price">250 ₽</div>
-                    <button class="cta-btn">Купить</button>
-                </div>
-                <div class="coin-pack featured" onclick="buyZcoin(500)">
-                    <img src="assets/zcoin.png" class="coin-img">
-                    <h3>550 Zcoin</h3>
-                    <div class="pack-price">500 ₽</div>
-                    <span class="bonus-tag">+50 бонус</span>
-                    <button class="cta-btn">Купить</button>
-                </div>
-                <div class="coin-pack" onclick="buyZcoin(1000)">
-                    <img src="assets/zcoin.png" class="coin-img">
-                    <h3>1 150 Zcoin</h3>
-                    <div class="pack-price">1 000 ₽</div>
-                    <span class="bonus-tag">+150 бонус</span>
-                    <button class="cta-btn">Купить</button>
-                </div>
-                <div class="coin-pack featured" onclick="buyZcoin(2500)">
-                    <img src="assets/zcoin.png" class="coin-img">
-                    <h3>3 000 Zcoin</h3>
-                    <div class="pack-price">2 500 ₽</div>
-                    <span class="bonus-tag">+500 бонус</span>
-                    <button class="cta-btn">Купить</button>
-                </div>
-                <div class="coin-pack" onclick="buyZcoin(5000)">
-                    <img src="assets/zcoin.png" class="coin-img">
-                    <h3>6 500 Zcoin</h3>
-                    <div class="pack-price">5 000 ₽</div>
-                    <span class="bonus-tag">+1500 бонус</span>
-                    <button class="cta-btn">Купить</button>
-                </div>
-            </div>
-
-            <!-- Своя сумма -->
-            <div class="custom-block">
-                <h3>Своя сумма</h3>
-                <p>Минимум 100 ₽</p>
-                <input type="number" id="customAmount" min="100" placeholder="Сумма в ₽" oninput="calcCustom()">
-                <p class="custom-result">Получишь: <span id="customResult">0</span> Zcoin</p>
-                <button class="cta-btn" onclick="buyZcoinCustom()">Купить</button>
-            </div>
+        <div class="custom-pay">
+            <h3>Своя сумма</h3>
+            <input type="number" id="customSum" placeholder="Сумма от 100 ₽" min="100">
+            <button class="buy-btn" onclick="payCustom()">Оплатить</button>
         </div>
     </main>
 
-    <footer class="footer">
-        <p>© 2025 Z-Horror. Все права защищены.</p>
-        <p class="footer-team">Z-Horror Team: <span>ignatik</span>, <span>frost</span></p>
-        <p>Discord: <a href="https://discord.gg/cx35GuHAbH" target="_blank">discord.gg/cx35GuHAbH</a></p>
-    </footer>
+    <script>
+        function pay(amount) {
+            const steam = document.getElementById('steamId').value.trim();
+            if (!steam) {
+                alert('Сначала введи свой SteamID!');
+                return;
+            }
+            const url = `https://www.donationalerts.com/r/ВАШ_НИК?name=${encodeURIComponent(steam)}&amount=${amount}&message=Zcoin`;
+            window.open(url, '_blank');
+        }
 
-    <script src="script.js"></script>
+        function payCustom() {
+            const sum = document.getElementById('customSum').value;
+            if (sum < 100) {
+                alert('Минимум 100 рублей');
+                return;
+            }
+            pay(sum);
+        }
+    </script>
 </body>
 </html>
